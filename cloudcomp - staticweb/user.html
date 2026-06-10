@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Dashboard</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+<body class="bg-gray-100">
+
+<div class="flex min-h-screen">
+
+    <!-- Sidebar -->
+    <aside class="w-64 bg-slate-900 text-white">
+
+        <div class="p-6 border-b border-slate-700">
+
+            <h1 class="text-2xl font-bold">
+                <i class="fa-solid fa-list-check mr-2"></i>
+                STM
+            </h1>
+
+            <p class="text-sm text-gray-400 mt-2">
+                Student Dashboard
+            </p>
+
+        </div>
+
+        <nav class="mt-6">
+
+            <a href="#"
+            class="flex items-center gap-3 px-6 py-3 bg-slate-800">
+
+                <i class="fa-solid fa-chart-line"></i>
+                Dashboard
+
+            </a>
+
+            <button
+            onclick="logout()"
+            class="w-full text-left flex items-center gap-3 px-6 py-3 hover:bg-red-600 mt-10">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
+
+            </button>
+
+        </nav>
+
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-8">
+
+        <!-- Header -->
+        <div class="flex justify-between items-center mb-8">
+
+            <div>
+
+                <h2 class="text-3xl font-bold text-gray-800">
+                    User Dashboard
+                </h2>
+
+                <p class="text-gray-500">
+                    Manage your assignments and daily tasks
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- Statistics -->
+        <div class="grid md:grid-cols-3 gap-6 mb-8">
+
+            <div class="bg-white rounded-2xl shadow p-6">
+
+                <div class="flex justify-between">
+
+                    <div>
+
+                        <p class="text-gray-500">
+                            Total Tasks
+                        </p>
+
+                        <h3
+                        id="totalTasks"
+                        class="text-3xl font-bold mt-2">
+                            0
+                        </h3>
+
+                    </div>
+
+                    <div class="w-14 h-14 rounded-xl bg-blue-100 flex items-center justify-center">
+
+                        <i class="fa-solid fa-list text-blue-600 text-xl"></i>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="bg-white rounded-2xl shadow p-6">
+
+                <div class="flex justify-between">
+
+                    <div>
+
+                        <p class="text-gray-500">
+                            Completed
+                        </p>
+
+                        <h3
+                        id="completedTasks"
+                        class="text-3xl font-bold mt-2">
+                            0
+                        </h3>
+
+                    </div>
+
+                    <div class="w-14 h-14 rounded-xl bg-green-100 flex items-center justify-center">
+
+                        <i class="fa-solid fa-check text-green-600 text-xl"></i>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="bg-white rounded-2xl shadow p-6">
+
+                <div class="flex justify-between">
+
+                    <div>
+
+                        <p class="text-gray-500">
+                            Pending
+                        </p>
+
+                        <h3
+                        id="pendingTasks"
+                        class="text-3xl font-bold mt-2">
+                            0
+                        </h3>
+
+                    </div>
+
+                    <div class="w-14 h-14 rounded-xl bg-orange-100 flex items-center justify-center">
+
+                        <i class="fa-solid fa-clock text-orange-600 text-xl"></i>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Progress Section -->
+        <div class="bg-white rounded-2xl shadow p-6 mb-8">
+
+            <div class="flex justify-between mb-3">
+
+                <span class="font-semibold">
+                    Task Completion Progress
+                </span>
+
+                <span id="progressText">
+                    0%
+                </span>
+
+            </div>
+
+            <div class="w-full bg-gray-200 rounded-full h-4">
+
+                <div
+                id="progressBar"
+                class="bg-green-500 h-4 rounded-full"
+                style="width:0%">
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Add Task -->
+        <div class="bg-white rounded-2xl shadow p-6 mb-8">
+
+            <h3 class="text-xl font-semibold mb-4">
+                Add New Task
+            </h3>
+
+            <div class="grid md:grid-cols-3 gap-4">
+
+                <input
+                type="text"
+                id="taskInput"
+                placeholder="Task Title"
+                class="border rounded-xl px-4 py-3">
+
+                <input
+                type="date"
+                id="taskDate"
+                class="border rounded-xl px-4 py-3">
+
+                <button
+                onclick="addTask()"
+                class="bg-blue-600 hover:bg-blue-700 text-white rounded-xl">
+
+                    Add Task
+
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- Task Management -->
+        <div class="bg-white rounded-2xl shadow p-6">
+
+            <div class="flex justify-between mb-5">
+
+                <h3 class="text-xl font-semibold">
+                    Task Management
+                </h3>
+
+                <input
+                type="text"
+                placeholder="Search Task..."
+                class="border px-4 py-2 rounded-lg">
+
+            </div>
+
+            <div class="overflow-x-auto">
+
+                <table class="w-full">
+
+                    <thead>
+
+                        <tr class="border-b">
+
+                            <th class="text-left py-3">
+                                Task
+                            </th>
+
+                            <th class="text-left py-3">
+                                Due Date
+                            </th>
+
+                            <th class="text-left py-3">
+                                Status
+                            </th>
+
+                            <th class="text-center py-3">
+                                Actions
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="taskList">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

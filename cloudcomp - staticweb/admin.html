@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body class="bg-gray-100">
+
+<div class="flex min-h-screen">
+
+    <!-- Sidebar -->
+    <aside class="w-64 bg-slate-900 text-white">
+
+        <div class="p-6 border-b border-slate-700">
+
+            <h1 class="text-2xl font-bold">
+                <i class="fa-solid fa-list-check mr-2"></i>
+                STM
+            </h1>
+
+            <p class="text-sm text-gray-400 mt-2">
+                Admin Panel
+            </p>
+
+        </div>
+
+        <nav class="mt-6">
+
+            <a href="#"
+            class="flex items-center gap-3 px-6 py-3 bg-slate-800">
+
+                <i class="fa-solid fa-chart-line"></i>
+                Dashboard
+
+            </a>
+
+            <button
+            onclick="logout()"
+            class="w-full text-left flex items-center gap-3 px-6 py-3 hover:bg-red-600 mt-10">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
+
+            </button>
+
+        </nav>
+
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-8">
+
+        <!-- Header -->
+        <div class="flex justify-between items-center mb-8">
+
+            <div>
+
+                <h2 class="text-3xl font-bold text-gray-800">
+                    Admin Dashboard
+                </h2>
+
+                <p class="text-gray-500">
+                    Manage users and monitor system activity
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- Stats -->
+        <div class="grid md:grid-cols-3 gap-6 mb-8">
+
+            <div class="bg-white rounded-2xl shadow p-6">
+
+                <div class="flex justify-between">
+
+                    <div>
+
+                        <p class="text-gray-500">
+                            Registered Users
+                        </p>
+
+                        <h3
+                        id="userCount"
+                        class="text-3xl font-bold mt-2">
+                            0
+                        </h3>
+
+                    </div>
+
+                    <div
+                    class="w-14 h-14 rounded-xl bg-blue-100 flex items-center justify-center">
+
+                        <i class="fa-solid fa-users text-blue-600 text-xl"></i>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="bg-white rounded-2xl shadow p-6">
+
+                <div class="flex justify-between">
+
+                    <div>
+
+                        <p class="text-gray-500">
+                            Active Status
+                        </p>
+
+                        <h3 class="text-3xl font-bold mt-2">
+                            Online
+                        </h3>
+
+                    </div>
+
+                    <div
+                    class="w-14 h-14 rounded-xl bg-green-100 flex items-center justify-center">
+
+                        <i class="fa-solid fa-circle-check text-green-600 text-xl"></i>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="bg-white rounded-2xl shadow p-6">
+
+                <div class="flex justify-between">
+
+                    <div>
+
+                        <p class="text-gray-500">
+                            System Version
+                        </p>
+
+                        <h3 class="text-3xl font-bold mt-2">
+                            1.0
+                        </h3>
+
+                    </div>
+
+                    <div
+                    class="w-14 h-14 rounded-xl bg-purple-100 flex items-center justify-center">
+
+                        <i class="fa-solid fa-cloud text-purple-600 text-xl"></i>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Add User -->
+        <div class="bg-white rounded-2xl shadow p-6 mb-8">
+
+            <h3 class="text-xl font-semibold mb-4">
+                Add New User
+            </h3>
+
+            <div class="flex gap-4">
+
+                <input
+                type="text"
+                id="userInput"
+                placeholder="Enter User Name"
+                class="flex-1 border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+                <button
+                onclick="addUser()"
+                class="bg-blue-600 hover:bg-blue-700 text-white px-6 rounded-xl">
+
+                    Add User
+
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- User Management -->
+        <div class="bg-white rounded-2xl shadow p-6">
+
+            <div class="flex justify-between mb-5">
+
+                <h3 class="text-xl font-semibold">
+                    User Management
+                </h3>
+
+                <input
+                type="text"
+                id="searchUser"
+                placeholder="Search User..."
+                class="border px-4 py-2 rounded-lg">
+
+            </div>
+
+            <div class="overflow-x-auto">
+
+                <table class="w-full">
+
+                    <thead>
+
+                        <tr class="border-b">
+
+                            <th class="text-left py-3">
+                                User Name
+                            </th>
+
+                            <th class="text-center py-3">
+                                Actions
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="userList">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
